@@ -1,0 +1,42 @@
+ {% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+<!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div class="hero-container">
+            <div class="row">
+ 
+            <h1 class="text-center">Login</h1>
+            {% include "messages.html" %}
+
+
+            <form action="/auth/login/" method="post">{% csrf_token %}
+                    <br />
+                    <label for="email" class=text-light>Email</label>
+                    <div class="form-group">
+                    <input
+                        type="text"
+                        class="form-control p-2 mb-3"
+                        name="email" id="email" placeholder="Enter email" required/>
+                    </div>
+                    <label for="pass1" class=text-light>Password</label>
+                    <div class="form-group">
+                    <input
+                        type="Password"
+                        class="form-control p-2 mb-3"
+                        name="pass1" id="pass1" placeholder="Password" required/>
+                    </div>
+                    <br />
+                    <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-success" type="submit">Login</button>
+                    </div>
+                    <br />
+                    <p class="text-light">New User ? <a class= "text-info" href="/auth/signup/">Singup</a></p>
+            </form>
+            </div>
+        </div>
+    </section><!-- End Hero --> 
+
+{% endblock %}

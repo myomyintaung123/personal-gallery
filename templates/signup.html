@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign-Up {% endblock %}
+
+{% block body %}
+
+
+        <!-- ======= Hero Section ======= -->
+            <section id="hero">
+                <div class="hero-container">
+                <div class="row">
+                <h1 class="text-center">Sign-Up</h1>
+                {% include "messages.html" %}
+
+               		
+                <form action="/auth/signup/" method="post">{% csrf_token %}
+	
+                        <br />
+                    <label for="name" class=text-light>Name</label>		
+                    <div class="form-group">		
+                    <input				
+                        type="text"				
+                        class="form-control p-2 mb-3"	
+                        name="name" id="name"
+                        placeholder="Enter Full Name"	
+                        required
+                    />
+                    </div>
+                    <label for="email" class=text-light>Email</label>
+                    <div class="form-group">
+                    <input
+                        type="text"
+                        class="form-control p-2 mb-3"
+                        name="email" id="email"
+                        placeholder="Enter email"
+                        required
+                    />
+                    </div>
+                    <label for="pass1" class=text-light>Password</label>
+                    <div class="form-group">
+                    <input
+                        type="Password"
+                        class="form-control p-2 mb-3"
+                        name="pass1" id="pass1" placeholder="Password must be at least 8 characters"
+                        required
+                    />
+
+                    <input type="checkbox" onclick="showPassword()">
+                        <span id="sp">Show Password</span> <i class="fa-solid fa-square-eye"></i>
+                        
+                        <br>
+                        <small class=text-light>Password must includ at least [1-9][a-z][A-Z][!@#$*] & 8 characters</small>
+
+
+                    </div>
+                    <label for="pass2" class=text-light>Comfirm Password</label>
+                    <div class="form-group">
+                    <input
+                        type="password"
+                        class="form-control p-2 mb-3"
+                        name="pass2" id="pass2" placeholder="Comfirm Password"
+                        required
+                    />
+                    </div>
+                    <br/>
+                    <div class="d-grid gap-2">
+                    <button class="btn btn-success" type="submit">Signin</button>
+                    </div>
+                    <br />
+                    <p class="text-light">Already User ? <a class= "text-info" href="/auth/login/">Login</a> </p>
+                </form>
+                    </div>
+                </div>
+            </section><!-- End Hero -->
+
+{% endblock %}
+
+{% block script %}
+  <script>
+    console.log("it is test!")
+    function showPassword(){
+      var x = document.getElementById("pass1");
+      var z = document.getElementById("pass2");
+      var y = document.getElementById("sp");
+      if (x.type == "password" && z.type == "password"){
+        x.type = " type";
+        z.type = " type";
+        y.innerText="Hide Passwword";
+        } else {
+        x.type = "password";
+        z.type = "password";
+        y.innerText="Show Password";
+      }
+    }
+  </script>
+
+{% endblock %}
