@@ -1,2 +1,2 @@
 # personal-project1
-my first personal project 
+my first personal project gallery
